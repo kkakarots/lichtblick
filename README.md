@@ -117,3 +117,28 @@ Contributions are welcome! Lichtblick is primarily built in TypeScript and React
 ## :star: Credits
 
 Lichtblick originally began as a fork of [Foxglove Studio](https://github.com/foxglove/studio), an open-source project developed by [Foxglove](https://foxglove.dev/).
+
+## ✌️ Postscript
+
+由于网络原因下载electron依赖时会有问题.
+
+解决方法:
+
+- 临时解决
+  ```cmd
+  set ELECTRON_MIRROR=https://registry.npmmirror.com/-/binary/electron/
+  set ELECTRON_CUSTOM_DIR={{ version }}
+  ```
+- 配置环境变量
+
+  ```cmd
+  key: ELECTRON_MIRROR
+
+  value: https://registry.npmmirror.com/-/binary/electron/
+
+  key: ELECTRON_CUSTOM_DIR
+
+  value: {{ version }}
+  ```
+
+  > yarn install
