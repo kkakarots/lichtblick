@@ -12,7 +12,9 @@ import { makeStyles } from "tss-react/mui";
 
 import Stack from "@lichtblick/suite-base/components/Stack";
 import { useWorkspaceActions } from "@lichtblick/suite-base/context/Workspace/useWorkspaceActions";
+import i18next from "i18next";
 
+const { t } = i18next;
 type ViewProps = {
   onOpen?: () => void;
 };
@@ -51,7 +53,7 @@ export default function View(props: PropsWithChildren<ViewProps>): React.JSX.Ele
             dialogActions.dataSource.open("start");
           }}
         >
-          Back
+          {t("connection:Back")}
         </Button>
 
         <Stack direction="row" gap={2}>
@@ -62,10 +64,10 @@ export default function View(props: PropsWithChildren<ViewProps>): React.JSX.Ele
               dialogActions.dataSource.close();
             }}
           >
-            Cancel
+            {t("connection:Cancel")}
           </Button>
           <Button variant="contained" onClick={onOpen} disabled={onOpen == undefined}>
-            Open
+            {t("connection:Open")}
           </Button>
         </Stack>
       </Stack>

@@ -15,6 +15,9 @@ import {
 import { IterablePlayer } from "@lichtblick/suite-base/players/IterablePlayer";
 import { WorkerSerializedIterableSource } from "@lichtblick/suite-base/players/IterablePlayer/WorkerSerializedIterableSource";
 import { Player } from "@lichtblick/suite-base/players/types";
+import i18next from "i18next";
+
+const { t } = i18next;
 
 const initWorkers: Record<string, () => Worker> = {
   ".bag": () => {
@@ -62,7 +65,7 @@ class RemoteDataSourceFactory implements IDataSourceFactory {
   public displayName = "Remote file";
   public iconName: IDataSourceFactory["iconName"] = "FileASPX";
   public supportedFileTypes = fileTypesAllowed;
-  public description = "Open pre-recorded .bag or .mcap files from a remote location.";
+  public description = t("connection:RemoteFileInfo2");
   public docsLinks = [
     {
       label: "ROS 1",
@@ -87,7 +90,7 @@ class RemoteDataSourceFactory implements IDataSourceFactory {
     ],
   };
 
-  public warning = "Loading large files over HTTP can be slow";
+  public warning = t("connection:RemoteFileInfo1");
 
   public initialize(args: DataSourceFactoryInitializeArgs): Player | undefined {
     if (args.params?.url == undefined) {

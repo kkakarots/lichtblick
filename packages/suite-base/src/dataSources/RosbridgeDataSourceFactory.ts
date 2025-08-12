@@ -11,7 +11,9 @@ import {
 } from "@lichtblick/suite-base/context/PlayerSelectionContext";
 import RosbridgePlayer from "@lichtblick/suite-base/players/RosbridgePlayer";
 import { Player } from "@lichtblick/suite-base/players/types";
+import i18next from "i18next";
 
+const { t } = i18next;
 class RosbridgeDataSourceFactory implements IDataSourceFactory {
   public id = "rosbridge-websocket";
   public type: IDataSourceFactory["type"] = "connection";
@@ -20,7 +22,7 @@ class RosbridgeDataSourceFactory implements IDataSourceFactory {
   public docsLinks = [
     { url: "https://lichtblick-suite.github.io/docs/connecting-to-data/rosbridge.html" },
   ];
-  public description = "Connect to a ROS 1 or ROS 2 system using the Rosbridge WebSocket protocol.";
+  public description = t("connection:RosbridgeInfo");
 
   public formConfig = {
     fields: [

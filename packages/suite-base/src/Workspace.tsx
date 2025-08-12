@@ -368,14 +368,15 @@ function WorkspaceContent(props: WorkspaceProps): React.JSX.Element {
   const eventsSupported = useEvents(selectEventsSupported);
   const showEventsTab = currentUserType !== "unauthenticated" && eventsSupported;
 
+  const { t: tOthers } = useTranslation("others");
   const leftSidebarItems = useMemo(() => {
     const items = new Map<LeftSidebarItemKey, SidebarItem>([
-      ["panel-settings", { title: "Panel", component: PanelSettingsSidebar }],
-      ["topics", { title: "Topics", component: TopicList }],
+      ["panel-settings", { title: tOthers("others:Panel"), component: PanelSettingsSidebar }],
+      ["topics", { title: tOthers("others:Topics"), component: TopicList }],
       [
         "alerts",
         {
-          title: "Alerts",
+          title: tOthers("others:Alerts"),
           component: AlertsList,
           badge:
             playerAlerts && playerAlerts.length > 0
@@ -386,7 +387,7 @@ function WorkspaceContent(props: WorkspaceProps): React.JSX.Element {
               : undefined,
         },
       ],
-      ["layouts", { title: "Layouts", component: LayoutBrowser }],
+      ["layouts", { title: tOthers("others:Layouts"), component: LayoutBrowser }],
     ]);
     return items;
   }, [PanelSettingsSidebar, playerAlerts]);

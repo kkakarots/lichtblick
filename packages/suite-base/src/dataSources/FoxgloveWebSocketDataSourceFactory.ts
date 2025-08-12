@@ -11,14 +11,16 @@ import {
 } from "@lichtblick/suite-base/context/PlayerSelectionContext";
 import FoxgloveWebSocketPlayer from "@lichtblick/suite-base/players/FoxgloveWebSocketPlayer";
 import { Player } from "@lichtblick/suite-base/players/types";
+import i18next from "i18next";
+
+const { t } = i18next;
 
 export default class FoxgloveWebSocketDataSourceFactory implements IDataSourceFactory {
   public id = "foxglove-websocket";
   public type: IDataSourceFactory["type"] = "connection";
   public displayName = "Foxglove WebSocket";
   public iconName: IDataSourceFactory["iconName"] = "Flow";
-  public description =
-    "Connect to a ROS 1, ROS 2, or custom system using the Foxglove WebSocket protocol. For ROS systems, be sure to first install the foxglove_bridge ROS package.";
+  public description = t("connection:FoxgloveWebSocketInfo");
   public docsLinks = [
     {
       label: "ROS 1",

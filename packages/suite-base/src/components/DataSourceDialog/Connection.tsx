@@ -19,7 +19,7 @@ import {
 } from "@lichtblick/suite-base/context/Workspace/WorkspaceContext";
 import { useWorkspaceActions } from "@lichtblick/suite-base/context/Workspace/useWorkspaceActions";
 import { AppEvent } from "@lichtblick/suite-base/services/IAnalytics";
-
+import { useTranslation } from "react-i18next";
 import { FormField } from "./FormField";
 import View from "./View";
 
@@ -92,6 +92,7 @@ export default function Connection(): React.JSX.Element {
   const { classes } = useStyles();
   const theme = useTheme();
   const mdUp = useMediaQuery(theme.breakpoints.up("md"));
+  const { t } = useTranslation("connection");
 
   const { activeDataSource } = useWorkspaceStore(selectDataSourceDialog);
   const { dialogActions } = useWorkspaceActions();
@@ -184,7 +185,7 @@ export default function Connection(): React.JSX.Element {
       <Stack className={classes.grid} data-testid="OpenConnection">
         <header className={classes.header}>
           <Typography variant="h3" fontWeight={600} gutterBottom>
-            Open a new connection
+            {t("connection:OpenNewConnection")}
           </Typography>
         </header>
         <div className={classes.sidebar}>
@@ -269,7 +270,9 @@ export default function Connection(): React.JSX.Element {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {item.label ? `View docs for ${item.label}` : "View docs"}
+                    {item.label
+                      ? t("connection:ViewDocs", { ros: item.label })
+                      : t("connection:ViewDocsDefult")}
                   </Link>
                 ))}
               </Stack>

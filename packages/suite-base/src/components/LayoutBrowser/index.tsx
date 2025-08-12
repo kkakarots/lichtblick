@@ -47,7 +47,7 @@ import { usePrompt } from "@lichtblick/suite-base/hooks/usePrompt";
 import { defaultPlaybackConfig } from "@lichtblick/suite-base/providers/CurrentLayoutProvider/reducers";
 import { AppEvent } from "@lichtblick/suite-base/services/IAnalytics";
 import { Layout, layoutIsShared } from "@lichtblick/suite-base/services/ILayoutStorage";
-
+import { useTranslation } from "react-i18next";
 import LayoutSection from "./LayoutSection";
 
 const log = Logger.getLogger(__filename);
@@ -72,6 +72,7 @@ export default function LayoutBrowser({
   const layoutManager = useLayoutManager();
   const [prompt, promptModal] = usePrompt();
   const analytics = useAnalytics();
+  const { t } = useTranslation();
 
   const currentLayoutId = useCurrentLayoutSelector(selectedLayoutIdSelector);
   const {
@@ -283,7 +284,7 @@ export default function LayoutBrowser({
           color="primary"
           key="add-layout"
           onClick={createNewLayout}
-          aria-label="Create new layout"
+          aria-label="Create new layout" // todo translate
           data-testid="add-layout"
           title="Create new layout"
         >
@@ -313,12 +314,14 @@ export default function LayoutBrowser({
             <List className={classes.actionList} disablePadding>
               <ListItem disablePadding>
                 <ListItemButton onClick={createNewLayout}>
-                  <ListItemText disableTypography>Create new layout</ListItemText>
+                  {/* todo translate */}
+                  <ListItemText disableTypography>{t("others:CreateNewLayout")}</ListItemText>
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton onClick={importLayout}>
-                  <ListItemText disableTypography>Import from file…</ListItemText>
+                  {/* todo translate */}
+                  <ListItemText disableTypography>{t("others:ImportFromFile")}</ListItemText>
                 </ListItemButton>
               </ListItem>
             </List>
